@@ -1,6 +1,12 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider, createEmotionCache } from '@mantine/core';
+import rtlPlugin from 'stylis-plugin-rtl';
+
+const rtlCache = createEmotionCache({
+  key: 'mantine-rtl',
+  stylisPlugins: [rtlPlugin],
+});
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
@@ -15,8 +21,9 @@ export default function App(props: AppProps) {
       <MantineProvider
         withGlobalStyles
         withNormalizeCSS
+        emotionCache={rtlCache}
         theme={{
-          /** Put your mantine theme override here */
+          dir: 'rtl',
           colorScheme: 'light',
         }}
       >
