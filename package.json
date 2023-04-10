@@ -11,16 +11,20 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/server": "^11.10.0",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@mantine/core": "^5.4.1",
     "@mantine/hooks": "^5.4.1",
     "@mantine/next": "^5.4.1",
     "next": "12.3.1",
     "react": "18.2.0",
+    "react-bootstrap": "^2.7.2",
     "react-dom": "18.2.0",
     "stylis": "^4.1.2",
     "stylis-plugin-rtl": "^2.1.1"
   },
   "devDependencies": {
+    "@types/css-font-loading-module": "^0.0.8",
     "@types/node": "18.7.21",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
