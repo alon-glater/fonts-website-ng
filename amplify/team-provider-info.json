@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplify495a66fd5acc4-staging-90117-authRole",
+      "UnauthRoleArn": "arn:aws:iam::486128106566:role/amplify-amplify495a66fd5acc4-staging-90117-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::486128106566:role/amplify-amplify495a66fd5acc4-staging-90117-authRole",
+      "Region": "eu-north-1",
+      "DeploymentBucketName": "amplify-amplify495a66fd5acc4-staging-90117-deployment",
+      "UnauthRoleName": "amplify-amplify495a66fd5acc4-staging-90117-unauthRole",
+      "StackName": "amplify-amplify495a66fd5acc4-staging-90117",
+      "StackId": "arn:aws:cloudformation:eu-north-1:486128106566:stack/amplify-amplify495a66fd5acc4-staging-90117/41534220-d77e-11ed-9e5e-06015c1a784a",
+      "AmplifyAppId": "d1jlx3zag5qf63"
+    },
+    "categories": {
+      "auth": {
+        "fontswebsiteng": {}
+      }
+    }
+  }
+}
