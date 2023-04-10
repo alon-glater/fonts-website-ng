@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import { Container, Row, Col, Button, ButtonGroup } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDown, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const PLACEHOLDER_TEXT = "אבגדהוזחטיכלמנסעפצקרשת0123456";
 
@@ -51,13 +49,13 @@ export const FontDisplay = ({
                 variant="outline-secondary"
                 onClick={() => onDownload(fileName)}
               >
-                <FontAwesomeIcon icon={faArrowDown} />
+                Download
               </Button>
               <Button
                 variant="outline-secondary"
                 onClick={() => onDeletion(fileName)}
               >
-                <FontAwesomeIcon icon={faTrashAlt} />
+                Delete
               </Button>
             </ButtonGroup>
           </Col>
