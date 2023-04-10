@@ -1,0 +1,12 @@
+{
+  "resourceName": "s3fontswebsitengstorage3bf2fba0",
+  "bucketName": "fonts-website-ng-storage-3bf2fba0",
+  "policyUUID": "109ebb77",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "READ"
+  ]
+}
