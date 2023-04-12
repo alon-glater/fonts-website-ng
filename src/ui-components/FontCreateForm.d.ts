@@ -14,17 +14,23 @@ export declare type ValidationResponse = {
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type FontCreateFormInputValues = {
     name?: string;
-    path?: string;
+    url?: string;
+    displayName?: string;
+    format?: string;
 };
 export declare type FontCreateFormValidationValues = {
     name?: ValidationFunction<string>;
-    path?: ValidationFunction<string>;
+    url?: ValidationFunction<string>;
+    displayName?: ValidationFunction<string>;
+    format?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type FontCreateFormOverridesProps = {
     FontCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
     name?: PrimitiveOverrideProps<TextFieldProps>;
-    path?: PrimitiveOverrideProps<TextFieldProps>;
+    url?: PrimitiveOverrideProps<TextFieldProps>;
+    displayName?: PrimitiveOverrideProps<TextFieldProps>;
+    format?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type FontCreateFormProps = React.PropsWithChildren<{
     overrides?: FontCreateFormOverridesProps | undefined | null;

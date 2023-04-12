@@ -13,7 +13,9 @@ type EagerFont = {
   };
   readonly id: string;
   readonly name?: string | null;
-  readonly path?: string | null;
+  readonly url?: string | null;
+  readonly displayName?: string | null;
+  readonly format?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -25,7 +27,9 @@ type LazyFont = {
   };
   readonly id: string;
   readonly name?: string | null;
-  readonly path?: string | null;
+  readonly url?: string | null;
+  readonly displayName?: string | null;
+  readonly format?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

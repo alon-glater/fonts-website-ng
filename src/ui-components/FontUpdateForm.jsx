@@ -25,17 +25,25 @@ export default function FontUpdateForm(props) {
   } = props;
   const initialValues = {
     name: "",
-    path: "",
+    url: "",
+    displayName: "",
+    format: "",
   };
   const [name, setName] = React.useState(initialValues.name);
-  const [path, setPath] = React.useState(initialValues.path);
+  const [url, setUrl] = React.useState(initialValues.url);
+  const [displayName, setDisplayName] = React.useState(
+    initialValues.displayName
+  );
+  const [format, setFormat] = React.useState(initialValues.format);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = fontRecord
       ? { ...initialValues, ...fontRecord }
       : initialValues;
     setName(cleanValues.name);
-    setPath(cleanValues.path);
+    setUrl(cleanValues.url);
+    setDisplayName(cleanValues.displayName);
+    setFormat(cleanValues.format);
     setErrors({});
   };
   const [fontRecord, setFontRecord] = React.useState(fontModelProp);
@@ -51,7 +59,9 @@ export default function FontUpdateForm(props) {
   React.useEffect(resetStateValues, [fontRecord]);
   const validations = {
     name: [],
-    path: [],
+    url: [],
+    displayName: [],
+    format: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -80,7 +90,9 @@ export default function FontUpdateForm(props) {
         event.preventDefault();
         let modelFields = {
           name,
-          path,
+          url,
+          displayName,
+          format,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -137,7 +149,9 @@ export default function FontUpdateForm(props) {
           if (onChange) {
             const modelFields = {
               name: value,
-              path,
+              url,
+              displayName,
+              format,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -153,29 +167,85 @@ export default function FontUpdateForm(props) {
         {...getOverrideProps(overrides, "name")}
       ></TextField>
       <TextField
-        label="Path"
+        label="Url"
         isRequired={false}
         isReadOnly={false}
-        value={path}
+        value={url}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
               name,
-              path: value,
+              url: value,
+              displayName,
+              format,
             };
             const result = onChange(modelFields);
-            value = result?.path ?? value;
+            value = result?.url ?? value;
           }
-          if (errors.path?.hasError) {
-            runValidationTasks("path", value);
+          if (errors.url?.hasError) {
+            runValidationTasks("url", value);
           }
-          setPath(value);
+          setUrl(value);
         }}
-        onBlur={() => runValidationTasks("path", path)}
-        errorMessage={errors.path?.errorMessage}
-        hasError={errors.path?.hasError}
-        {...getOverrideProps(overrides, "path")}
+        onBlur={() => runValidationTasks("url", url)}
+        errorMessage={errors.url?.errorMessage}
+        hasError={errors.url?.hasError}
+        {...getOverrideProps(overrides, "url")}
+      ></TextField>
+      <TextField
+        label="Display name"
+        isRequired={false}
+        isReadOnly={false}
+        value={displayName}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              url,
+              displayName: value,
+              format,
+            };
+            const result = onChange(modelFields);
+            value = result?.displayName ?? value;
+          }
+          if (errors.displayName?.hasError) {
+            runValidationTasks("displayName", value);
+          }
+          setDisplayName(value);
+        }}
+        onBlur={() => runValidationTasks("displayName", displayName)}
+        errorMessage={errors.displayName?.errorMessage}
+        hasError={errors.displayName?.hasError}
+        {...getOverrideProps(overrides, "displayName")}
+      ></TextField>
+      <TextField
+        label="Format"
+        isRequired={false}
+        isReadOnly={false}
+        value={format}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              url,
+              displayName,
+              format: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.format ?? value;
+          }
+          if (errors.format?.hasError) {
+            runValidationTasks("format", value);
+          }
+          setFormat(value);
+        }}
+        onBlur={() => runValidationTasks("format", format)}
+        errorMessage={errors.format?.errorMessage}
+        hasError={errors.format?.hasError}
+        {...getOverrideProps(overrides, "format")}
       ></TextField>
       <Flex
         justifyContent="space-between"

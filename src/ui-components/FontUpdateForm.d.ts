@@ -15,17 +15,23 @@ export declare type ValidationResponse = {
 export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type FontUpdateFormInputValues = {
     name?: string;
-    path?: string;
+    url?: string;
+    displayName?: string;
+    format?: string;
 };
 export declare type FontUpdateFormValidationValues = {
     name?: ValidationFunction<string>;
-    path?: ValidationFunction<string>;
+    url?: ValidationFunction<string>;
+    displayName?: ValidationFunction<string>;
+    format?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type FontUpdateFormOverridesProps = {
     FontUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
     name?: PrimitiveOverrideProps<TextFieldProps>;
-    path?: PrimitiveOverrideProps<TextFieldProps>;
+    url?: PrimitiveOverrideProps<TextFieldProps>;
+    displayName?: PrimitiveOverrideProps<TextFieldProps>;
+    format?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type FontUpdateFormProps = React.PropsWithChildren<{
     overrides?: FontUpdateFormOverridesProps | undefined | null;

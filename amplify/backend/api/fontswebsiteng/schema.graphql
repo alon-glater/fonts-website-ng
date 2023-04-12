@@ -1,5 +1,8 @@
 type Font @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
-  path: String
+  url: String
+  displayName: String
+  format: String
 }
+ 
