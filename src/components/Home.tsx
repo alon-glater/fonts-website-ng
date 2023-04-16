@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Pagination } from "react-bootstrap";
 import type { Font } from "../types";
 import { FontCategory } from "../font-categories";
 import { TextPreviewInput } from "./TextPreviewInput";
 import { Categories } from "./Categories";
 import { FontDisplay } from "./FontDisplay";
+import { Container } from "@mantine/core";
 
 interface HomeProps {
   fonts: Font[];
@@ -34,59 +34,18 @@ export const Main = ({
   return (
     <>
       <Container>
-        <Row>
-          <Col>
-            <Categories
-              categories={Object.values(FontCategory)}
-              selectedCategory={selectedCategory}
-              onCategoryChange={onCategoryChange}
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <TextPreviewInput
-              onChange={(text: string) => setDisplayedText(text)}
-            />
-          </Col>
-        </Row>
-      </Container>
-      <Container fluid>
-        <Row>
-          <Col>
-            {fonts &&
-              fonts.map(({ name, displayName, format, url }) => (
-                <FontDisplay
-                  key={name}
-                  text={displayedText}
-                  fontName={name}
-                  displayName={displayName}
-                  fileName={name + "." + format.split("/")[1]}
-                  fontUrl={url}
-                  onDownload={onFontDownload}
-                  onDeletion={onFontDeletion}
-                />
-              ))}
-          </Col>
-        </Row>
-        <hr />
-        <Row className="justify-content-center">
-          <Col xs="auto">
-            <Pagination style={{ direction: "ltr" }}>
-              {range(1, Math.ceil(totalFontsAmount / fontsPerPageAmount)).map(
-                (index) => (
-                  <Pagination.Item
-                    key={index}
-                    active={index === currentPage}
-                    onClick={() => onPageChange(index)}
-                  >
-                    {index}
-                  </Pagination.Item>
-                )
-              )}
-            </Pagination>
-          </Col>
-        </Row>
+        {fonts.map((font) => (
+          <FontDisplay
+            key={font.name}
+            text="Placeholder"
+            fontName={font.name}
+            displayName={font.displayName}
+            fontUrl={font.url}
+            fileName="Placeholder"
+            onDownload={() => undefined}
+            onDeletion={() => undefined}
+          />
+        ))}
       </Container>
     </>
   );

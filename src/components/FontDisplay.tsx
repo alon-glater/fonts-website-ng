@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Container, Row, Col, Button, ButtonGroup } from "react-bootstrap";
+import { Container, Grid, Title } from "@mantine/core";
 
 const PLACEHOLDER_TEXT = "אבגדהוזחטיכלמנסעפצקרשת0123456";
 
@@ -29,38 +29,12 @@ export const FontDisplay = ({
   }, [fontName, fontUrl]);
 
   return (
-    <>
-      <Container fluid>
-        <Row className="justify-content-start">
-          <Col xs="auto">
-            <h5 style={{ fontFamily: fontName }}>{displayName}</h5>
-          </Col>
-        </Row>
-        <hr style={{ marginTop: 0 }} />
-        <Row className="justify-content-between">
-          <Col xs="auto">
-            <h1 className="display-4" style={{ fontFamily: fontName }}>
-              {text || PLACEHOLDER_TEXT}
-            </h1>
-          </Col>
-          <Col xs="auto">
-            <ButtonGroup vertical size="lg">
-              <Button
-                variant="outline-secondary"
-                onClick={() => onDownload(fileName)}
-              >
-                Download
-              </Button>
-              <Button
-                variant="outline-secondary"
-                onClick={() => onDeletion(fileName)}
-              >
-                Delete
-              </Button>
-            </ButtonGroup>
-          </Col>
-        </Row>
-      </Container>
-    </>
+    <Grid>
+      <Grid.Col span={12}>
+        <Title order={1} style={{ fontFamily: fontName }}>
+          {displayName}
+        </Title>
+      </Grid.Col>
+    </Grid>
   );
 };
