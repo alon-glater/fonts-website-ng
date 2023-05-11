@@ -99,14 +99,19 @@ export default function App(props: AppProps) {
                 },
               },
             },
+            Container: {
+              styles: {
+                root: {
+                  height: "100%",
+                },
+              },
+            },
           },
         }}
       >
         <Container>
           <AppShell header={<Header />}>
-            <main>
-              <Component {...pageProps} />
-            </main>
+            <Component {...pageProps} />
           </AppShell>
         </Container>
       </MantineProvider>
