@@ -3206,6 +3206,18 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
+"@types/lodash.compact@^3.0.7":
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/@types/lodash.compact/-/lodash.compact-3.0.7.tgz#a3ac6891bfc002a16a0c7559fd4abf8376b85c66"
+  integrity sha512-yHP+S4QY9C/OLWc+Ei7A1rdwGcBgwFOaW20eZU8qA42dNRwUWnGltDAmKg5ICVGrgJKTokv0gsz1dsQl1gKA2w==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
+  version "4.14.194"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.194.tgz#b71eb6f7a0ff11bff59fc987134a093029258a76"
+  integrity sha512-r22s9tAS7imvBt2lyHC9B8AGwWnXaYb1tY09oyLkXDs4vArpYJzw09nj8MLx5VfciBPGIb+ZwG0ssYnEPJxn/g==
+
 "@types/mapbox-gl@^2.6.0":
   version "2.7.10"
   resolved "https://registry.yarnpkg.com/@types/mapbox-gl/-/mapbox-gl-2.7.10.tgz#a3a32a366bad8966c0a40b78209ed430ba018ce1"
@@ -5032,6 +5044,11 @@ locate-path@^6.0.0:
   integrity sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==
   dependencies:
     p-locate "^5.0.0"
+
+lodash.compact@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/lodash.compact/-/lodash.compact-3.0.1.tgz#540ce3837745975807471e16b4a2ba21e7256ca5"
+  integrity sha512-2ozeiPi+5eBXW1CLtzjk8XQFhQOEMwwfxblqeq6EGyTxZJ1bPATqilY0e6g2SLQpP4KuMeuioBhEnWz5Pr7ICQ==
 
 lodash.debounce@^4.0.6:
   version "4.0.8"
