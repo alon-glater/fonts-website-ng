@@ -4,7 +4,7 @@ export interface Link {
   action?: (argument: any) => void;
 }
 
-export interface Font {
+export interface Fontlike {
   name: string;
   displayName: string;
   format: string;
