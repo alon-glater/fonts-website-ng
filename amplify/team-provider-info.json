@@ -17,6 +17,9 @@
       },
       "storage": {
         "s3fontswebsitengstorage3bf2fba0": {}
+      },
+      "api": {
+        "fontswebsiteng": {}
       }
     }
   }
