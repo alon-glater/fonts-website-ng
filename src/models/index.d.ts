@@ -12,10 +12,10 @@ type EagerFont = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly name?: string | null;
-  readonly url?: string | null;
-  readonly displayName?: string | null;
-  readonly format?: string | null;
+  readonly name: string;
+  readonly url: string;
+  readonly displayName: string;
+  readonly format: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -26,10 +26,10 @@ type LazyFont = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly name?: string | null;
-  readonly url?: string | null;
-  readonly displayName?: string | null;
-  readonly format?: string | null;
+  readonly name: string;
+  readonly url: string;
+  readonly displayName: string;
+  readonly format: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
