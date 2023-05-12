@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import type { Font } from "../types";
+import type { Fontlike } from "../types";
 import { FontCategory } from "../font-categories";
 import { TextPreviewInput } from "./TextPreviewInput";
 import { Categories } from "./Categories";
@@ -8,7 +8,7 @@ import { FontsList } from "./FontsList";
 import { Container } from "@mantine/core";
 
 interface HomeProps {
-  fonts: Font[];
+  fonts: Fontlike[];
   totalFontsAmount: number;
   fontsPerPageAmount: number;
   currentPage: number;

@@ -2,37 +2,29 @@ import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { Main } from "../src/components/Home";
-import { Font } from "../src/types";
+import { Fontlike } from "../src/types";
 import { FontCategory } from "../src/font-categories";
 import { DataStore, Amplify } from "aws-amplify";
 import { Font as _Font } from "../src/models";
 import awsconfig from "../src/aws-exports";
 Amplify.configure(awsconfig);
 type HomeProps = {
-  fonts: Font[];
+  fonts: Fontlike[];
 };
 
 const Home: NextPage<HomeProps> = ({ fonts }) => {
   return (
-    <div>
-      <p> {JSON.stringify(fonts)}</p>
-      <p>משהו כתוב פה</p>
-      <main>
-        <Main
-          fonts={fonts}
-          totalFontsAmount={0}
-          fontsPerPageAmount={5}
-          selectedCategory={FontCategory.ALL}
-          currentPage={1}
-          onCategoryChange={() => undefined}
-          onPageChange={() => undefined}
-          onFontDownload={() => undefined}
-          onFontDeletion={() => undefined}
-        />
-      </main>
-
-      <footer></footer>
-    </div>
+    <Main
+      fonts={fonts}
+      totalFontsAmount={0}
+      fontsPerPageAmount={5}
+      selectedCategory={FontCategory.ALL}
+      currentPage={1}
+      onCategoryChange={() => undefined}
+      onPageChange={() => undefined}
+      onFontDownload={() => undefined}
+      onFontDeletion={() => undefined}
+    />
   );
 };
 

@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
-import { Container, Grid, Title } from "@mantine/core";
+import { Container, Grid, Title, Text, Divider, Slider } from "@mantine/core";
 
 const PLACEHOLDER_TEXT = "אבגדהוזחטיכלמנסעפצקרשת0123456";
+const FONT_SIZE = "גודל";
+const LETTER_SPACING = "מרווח תווים";
 
 interface FontDisplayProps {
   text: string;
@@ -35,6 +37,19 @@ export const FontDisplay = ({
           {displayName}
         </Title>
       </Grid.Col>
+      <Grid.Col span={3}>
+        <Text>{displayName}</Text>
+        <Divider />
+      </Grid.Col>
+      <Grid.Col span={3}>
+        <Text>{FONT_SIZE}</Text>
+        <Slider size={1} />
+      </Grid.Col>
+      <Grid.Col span={3}>
+        <Text>{LETTER_SPACING}</Text>
+        <Slider size={1} />
+      </Grid.Col>
+      <Grid.Col span="auto"></Grid.Col>
     </Grid>
   );
 };

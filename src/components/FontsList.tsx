@@ -1,8 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { API, graphqlOperation } from "aws-amplify";
+import { GraphQLQuery } from "@aws-amplify/api";
 import { clsx, createStyles } from "@mantine/core";
+import compact from "lodash.compact";
 import { TextPreviewInput } from "./TextPreviewInput";
+import { FontDisplay } from "./FontDisplay";
+import { listFonts } from "../graphql/queries";
+import type { Fontlike } from "../types";
+import type { ListFontsQuery } from "../API";
+import { Font } from "../Font";
 
 const DEFAULT_PAGE_SIZE = 0;
+const FONT_DISPLAY_HEIGHT = 144;
 
 const useStyles = createStyles({
   flexColumn: {
@@ -22,27 +31,60 @@ const useStyles = createStyles({
 
 export function FontsList() {
   const { classes } = useStyles();
+  const fontsListContainerRef = useRef<HTMLDivElement>(null);
   const [displayedText, setDisplayedText] = useState("");
   const [pageIndex, setPageIndex] = useState(0);
   const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
+  const [fonts, setFonts] = useState<Fontlike[]>([]);
+
+  useEffect(() => {
+    const fontsListHeight = fontsListContainerRef.current?.clientHeight;
+
+    if (fontsListHeight) {
+      const pageSize = Math.floor(fontsListHeight / FONT_DISPLAY_HEIGHT);
+
+      setPageSize(pageSize);
+    }
+  }, [fontsListContainerRef.current?.clientHeight]);
+
+  useEffect(() => {
+    API.graphql<GraphQLQuery<ListFontsQuery>>(graphqlOperation(listFonts)).then(
+      (response) => {
+        console.log(JSON.stringify(response));
+        const fetchedFonts = response.data?.listFonts?.items;
+        if (fetchedFonts?.length) {
+          setFonts(
+            compact(fetchedFonts).map(
+              ({ name, displayName, url, format }) =>
+                new Font(name, displayName, url, format)
+            )
+          );
+        }
+      }
+    );
+  }, [pageSize, pageIndex]);
 
   return (
     <div className={clsx("FontsList", classes.flexColumn)}>
       <TextPreviewInput onChange={setDisplayedText} />
 
-      <div className={classes.fontsDisplayContainer}></div>
-      {/* {fonts.map((font) => (
-  <FontDisplay
-    key={font.name}
-    text="Placeholder"
-    fontName={font.name}
-    displayName={font.displayName}
-    fontUrl={font.url}
-    fileName="Placeholder"
-    onDownload={() => undefined}
-    onDeletion={() => undefined}
-  />
-))} */}
+      <div
+        className={classes.fontsDisplayContainer}
+        ref={fontsListContainerRef}
+      >
+        {fonts.map((font) => (
+          <FontDisplay
+            key={font.name}
+            text="Placeholder"
+            fontName={font.name}
+            displayName={font.displayName}
+            fontUrl={font.url}
+            fileName="Placeholder"
+            onDownload={() => undefined}
+            onDeletion={() => undefined}
+          />
+        ))}
+      </div>
 
       <div className={classes.flexCentered}>
         <>
