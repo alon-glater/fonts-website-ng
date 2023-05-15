@@ -12,7 +12,6 @@ import {
 } from "@mantine/core";
 import rtlPlugin from "stylis-plugin-rtl";
 import { Header } from "../src/components/Header";
-import "./fonts.css";
 import "../styles/globals.css";
 
 const rtlCache = createEmotionCache({
