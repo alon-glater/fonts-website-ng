@@ -105,6 +105,17 @@ export default function App(props: AppProps) {
                 },
               },
             },
+            Slider: {
+              styles: {
+                bar: {
+                  backgroundColor: "black",
+                },
+                thumb: {
+                  borderColor: "black",
+                  color: "black",
+                },
+              },
+            },
           },
         }}
       >

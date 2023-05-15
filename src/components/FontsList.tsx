@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import { GraphQLQuery } from "@aws-amplify/api";
-import { clsx, createStyles } from "@mantine/core";
+import { clsx, createStyles, Divider, Flex } from "@mantine/core";
 import compact from "lodash.compact";
 import { TextPreviewInput } from "./TextPreviewInput";
 import { FontDisplay } from "./FontDisplay";
@@ -13,10 +13,10 @@ import { Font } from "../Font";
 const DEFAULT_PAGE_SIZE = 0;
 const FONT_DISPLAY_HEIGHT = 144;
 
+const SpacedDivider: React.FC = () => <Divider my="lg" />;
+
 const useStyles = createStyles({
-  flexColumn: {
-    display: "flex",
-    flexDirection: "column",
+  fullHeight: {
     height: "100%",
   },
   flexCentered: {
@@ -65,24 +65,32 @@ export function FontsList() {
   }, [pageSize, pageIndex]);
 
   return (
-    <div className={clsx("FontsList", classes.flexColumn)}>
+    <Flex
+      direction="column"
+      gap="xl"
+      className={clsx("FontsList", classes.fullHeight)}
+    >
       <TextPreviewInput onChange={setDisplayedText} />
 
       <div
         className={classes.fontsDisplayContainer}
         ref={fontsListContainerRef}
       >
-        {fonts.map((font) => (
-          <FontDisplay
-            key={font.name}
-            text={displayedText}
-            fontName={font.name}
-            displayName={font.displayName}
-            fontUrl={font.url}
-            fileName="Placeholder"
-            onDownload={() => undefined}
-            onDeletion={() => undefined}
-          />
+        {fonts.map((font, index, array) => (
+          <>
+            {index === 0 && <SpacedDivider />}
+            <FontDisplay
+              key={font.name}
+              text={displayedText}
+              fontName={font.name}
+              displayName={font.displayName}
+              fontUrl={font.url}
+              fileName="Placeholder"
+              onDownload={() => undefined}
+              onDeletion={() => undefined}
+            />
+            {index < array.length - 1 && <SpacedDivider />}
+          </>
         ))}
       </div>
 
@@ -92,6 +100,6 @@ export function FontsList() {
           <button>הבא</button>
         </>
       </div>
-    </div>
+    </Flex>
   );
 }

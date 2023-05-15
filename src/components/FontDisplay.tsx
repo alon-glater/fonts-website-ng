@@ -91,6 +91,7 @@ export const FontDisplay = ({
             onChange={setFontSize}
             min={MIN_FONT_SIZE}
             max={MAX_FONT_SIZE}
+            label={formatSliderLabel}
           />
         </Grid.Col>
         <Grid.Col span={3}>
@@ -101,6 +102,7 @@ export const FontDisplay = ({
             onChange={setLetterSpacing}
             min={0}
             max={MAX_LETTER_SPACING}
+            label={formatSliderLabel}
           />
         </Grid.Col>
         <Grid.Col span="auto"></Grid.Col>
@@ -111,3 +113,7 @@ export const FontDisplay = ({
     </Flex>
   );
 };
+
+function formatSliderLabel(value: number) {
+  return <span dir="ltr">{value} px</span>;
+}
