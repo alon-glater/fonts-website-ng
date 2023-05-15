@@ -75,7 +75,7 @@ export function FontsList() {
         {fonts.map((font) => (
           <FontDisplay
             key={font.name}
-            text="Placeholder"
+            text={displayedText}
             fontName={font.name}
             displayName={font.displayName}
             fontUrl={font.url}
