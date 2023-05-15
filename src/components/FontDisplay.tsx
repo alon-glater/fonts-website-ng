@@ -63,12 +63,38 @@ export const FontDisplay = ({
     Number(theme.headings.sizes.h1.fontSize?.valueOf() ?? 0)
   );
   const [letterSpacing, setLetterSpacing] = useState(0);
+  const [downloadUrl, setDownloadUrl] = useState("");
   const { classes } = useStyles({ fontName, fontSize, letterSpacing });
 
+  function downloadFont() {
+    downloadFile(fontUrl, fontName, "woff");
+  }
+
   useEffect(() => {
+    let font: FontFace;
+
     new FontFace(fontName, `url(${fontUrl})`).load().then((loadedFont) => {
-      document.fonts.add(loadedFont);
+      font = loadedFont;
+      document.fonts.add(font);
     });
+
+    fetch(fontUrl, {
+      method: "GET",
+      headers: {
+        "Content-Type": "font/woff",
+      },
+    })
+      .then((response) => response.blob())
+      .then((blob) => {
+        const downloadUrl = window.URL.createObjectURL(new Blob([blob]));
+        setDownloadUrl(downloadUrl);
+      });
+
+    return () => {
+      if (font && document.fonts.has(font)) {
+        document.fonts.delete(font);
+      }
+    };
   }, [fontName, fontUrl]);
 
   return (
@@ -107,7 +133,7 @@ export const FontDisplay = ({
         </Grid.Col>
         <Grid.Col span="auto"></Grid.Col>
       </Grid>
-      <Button size="xl" p={19}>
+      <Button size="xl" p={19} loading={!downloadUrl} onClick={downloadFont}>
         <FaDownload />
       </Button>
     </Flex>
@@ -116,4 +142,13 @@ export const FontDisplay = ({
 
 function formatSliderLabel(value: number) {
   return <span dir="ltr">{value} px</span>;
+}
+
+function downloadFile(src: string, filename: string, format: string) {
+  const link = document.createElement("a");
+  link.href = src;
+  link.download = `${filename}.${format}`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
