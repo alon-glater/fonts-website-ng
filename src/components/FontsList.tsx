@@ -77,10 +77,9 @@ export function FontsList() {
         ref={fontsListContainerRef}
       >
         {fonts.map((font, index, array) => (
-          <>
+          <div key={font.name}>
             {index === 0 && <SpacedDivider />}
             <FontDisplay
-              key={font.name}
               text={displayedText}
               fontName={font.name}
               displayName={font.displayName}
@@ -90,7 +89,7 @@ export function FontsList() {
               onDeletion={() => undefined}
             />
             {index < array.length - 1 && <SpacedDivider />}
-          </>
+          </div>
         ))}
       </div>
 
