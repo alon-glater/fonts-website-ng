@@ -84,17 +84,29 @@ export default function App(props: AppProps) {
         theme={{
           dir: "rtl",
           colorScheme: "light",
+          colors: {
+            brand: [
+              "#F1E7FD",
+              "#D7BDFA",
+              "#BE92F6",
+              "#A468F3",
+              "#8B3DF0",
+              "#7113EC",
+              "#5A0FBD",
+              "#440B8E",
+              "#2D085E",
+              "#17042F",
+            ],
+          },
+          primaryColor: "brand",
+          primaryShade: 4,
           components: {
             Button: {
               styles: {
                 root: {
                   borderRadius: 45,
                   padding: 12,
-                  backgroundColor: "#8E43F0",
-                  transition: "background-color .3s ease",
-                  "&:hover": {
-                    backgroundColor: "#2b1448",
-                  },
+                  transition: "background-color .2s linear",
                 },
               },
             },
@@ -113,6 +125,13 @@ export default function App(props: AppProps) {
                 thumb: {
                   borderColor: "black",
                   color: "black",
+                },
+              },
+            },
+            TextInput: {
+              styles: {
+                input: {
+                  transition: "all .2s linear",
                 },
               },
             },

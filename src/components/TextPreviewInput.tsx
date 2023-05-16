@@ -1,4 +1,5 @@
 import React, { ChangeEvent } from "react";
+import { TextInput } from "@mantine/core";
 
 interface TextPreviewInputProps {
   onChange: (text: string) => void;
@@ -9,10 +10,12 @@ export const TextPreviewInput = ({ onChange }: TextPreviewInputProps) => {
     onChange(event.target.value);
 
   return (
-    <input
-      type="text"
-      placeholder="הכנס טקסט כדי לראות תצוגה מקדימה"
+    <TextInput
+      placeholder="מה תרצו לכתוב היום?"
       onChange={handleChange}
+      variant="filled"
+      radius={2}
+      size="xl"
     />
   );
 };
