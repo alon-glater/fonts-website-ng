@@ -138,7 +138,7 @@ export default function App(props: AppProps) {
           },
         }}
       >
-        <Container>
+        <Container maw={1140}>
           <AppShell header={<Header />} padding={0}>
             <Component {...pageProps} />
           </AppShell>

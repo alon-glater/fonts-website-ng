@@ -4,6 +4,8 @@ import { clsx, createStyles, Text, Title, Header } from "@mantine/core";
 const useStyles = createStyles({
   banner: {
     backgroundImage: 'url("home-banner.webp")',
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     width: "100vw",
     position: "relative",
