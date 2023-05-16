@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import type { Fontlike } from "../types";
 import { FontCategory } from "../font-categories";
 import { TextPreviewInput } from "./TextPreviewInput";
-import { Categories } from "./Categories";
 import { FontDisplay } from "./FontDisplay";
 import { FontsList } from "./FontsList";
 import { Container } from "@mantine/core";
