@@ -7,10 +7,9 @@ import {
   Slider,
   createStyles,
   useMantineTheme,
-  Button,
   Flex,
 } from "@mantine/core";
-import { FaDownload } from "react-icons/fa";
+import { DownloadButton } from "./DownloadButton";
 
 const PLACEHOLDER_TEXT = "אבגדהוזחטיכלמנסעפצקרשת0123456";
 const FONT_SIZE = "גודל";
@@ -65,10 +64,6 @@ export const FontDisplay = ({
   const [letterSpacing, setLetterSpacing] = useState(0);
   const [downloadUrl, setDownloadUrl] = useState("");
   const { classes } = useStyles({ fontName, fontSize, letterSpacing });
-
-  function downloadFont() {
-    downloadFile(fontUrl, fontName, "woff");
-  }
 
   useEffect(() => {
     let font: FontFace;
@@ -133,22 +128,11 @@ export const FontDisplay = ({
         </Grid.Col>
         <Grid.Col span="auto"></Grid.Col>
       </Grid>
-      <Button size="xl" p={19} loading={!downloadUrl} onClick={downloadFont}>
-        <FaDownload />
-      </Button>
+      <DownloadButton src={downloadUrl} filename={fontName} />
     </Flex>
   );
 };
 
 function formatSliderLabel(value: number) {
   return <span dir="ltr">{value} px</span>;
-}
-
-function downloadFile(src: string, filename: string, format: string) {
-  const link = document.createElement("a");
-  link.href = src;
-  link.download = `${filename}.${format}`;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
 }
