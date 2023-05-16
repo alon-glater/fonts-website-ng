@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import type { Fontlike } from "../types";
 import { FontCategory } from "../font-categories";
-import { TextPreviewInput } from "./TextPreviewInput";
-import { FontDisplay } from "./FontDisplay";
 import { FontsList } from "./FontsList";
-import { Container } from "@mantine/core";
+import { Banner } from "./Banner";
 
 interface HomeProps {
   fonts: Fontlike[];
@@ -32,7 +30,13 @@ export const Main = ({
   const [displayedText, setDisplayedText] = useState<string>("");
   const [pageIndex, setPageIndex] = useState<number>(0);
 
-  return <FontsList />;
+  return (
+    <>
+      <Banner />
+      <br />
+      <FontsList />
+    </>
+  );
 };
 
 const range = (start: number, end: number) => {

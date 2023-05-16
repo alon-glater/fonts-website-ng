@@ -139,7 +139,7 @@ export default function App(props: AppProps) {
         }}
       >
         <Container>
-          <AppShell header={<Header />}>
+          <AppShell header={<Header />} padding={0}>
             <Component {...pageProps} />
           </AppShell>
         </Container>
